@@ -1,0 +1,74 @@
+Operating System: macOS
+CPU Information: Intel(R) Xeon(R) W-2140B CPU @ 3.20GHz
+Number of Available Cores: 16
+Available memory: 32 GB
+Elixir 1.16.2
+Erlang 26.2.5
+JIT enabled: false
+
+Benchmark suite executing with the following configuration:
+warmup: 2 s
+time: 1 min
+memory time: 2 s
+reduction time: 0 ns
+parallel: 1
+inputs: list of lists of dates as dates, list of lists of dates as dates without dtype, list of lists of dates as ints
+Estimated total run time: 6 min 24 s
+
+Benchmarking new with input list of lists of dates as dates ...
+Benchmarking new with input list of lists of dates as dates without dtype ...
+Benchmarking new with input list of lists of dates as ints ...
+Benchmarking old with input list of lists of dates as dates ...
+Benchmarking old with input list of lists of dates as dates without dtype ...
+Benchmarking old with input list of lists of dates as ints ...
+Calculating statistics...
+Formatting results...
+
+##### With input list of lists of dates as dates #####
+Name           ips        average  deviation         median         99th %
+new           1.35      738.22 ms     ±3.26%      729.99 ms      827.11 ms
+old           1.17      852.67 ms     ±1.06%      851.16 ms      902.52 ms
+
+Comparison:
+new           1.35
+old           1.17 - 1.16x slower +114.45 ms
+
+Memory usage statistics:
+
+Name    Memory usage
+new        102.22 KB
+old        125.68 KB - 1.23x memory usage +23.46 KB
+
+**All measurements for memory usage were the same**
+
+##### With input list of lists of dates as dates without dtype #####
+Name           ips        average  deviation         median         99th %
+old           1.17      853.28 ms     ±1.71%      850.46 ms      955.73 ms
+new           1.15      868.45 ms     ±2.90%      859.07 ms      960.19 ms
+
+Comparison:
+old           1.17
+new           1.15 - 1.02x slower +15.17 ms
+
+Memory usage statistics:
+
+Name    Memory usage
+old        125.66 KB
+new        125.66 KB - 1.00x memory usage +0 KB
+
+**All measurements for memory usage were the same**
+
+##### With input list of lists of dates as ints #####
+Name           ips        average  deviation         median         99th %
+new           5.82      171.68 ms     ±2.02%      170.47 ms      182.74 ms
+old           3.38      295.44 ms     ±1.84%      293.59 ms      332.03 ms
+
+Comparison:
+new           5.82
+old           3.38 - 1.72x slower +123.76 ms
+
+Memory usage statistics:
+
+Name    Memory usage
+new        102.22 KB
+old        126.04 KB - 1.23x memory usage +23.82 KB
