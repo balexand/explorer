@@ -170,28 +170,69 @@ defmodule Explorer.PolarsBackend.Shared do
   def from_list(list, dtype, name) when is_list(list) do
     case dtype do
       # Signed integers
-      {:s, 8} -> Native.s_from_list_s8(name, list)
-      {:s, 16} -> Native.s_from_list_s16(name, list)
-      {:s, 32} -> Native.s_from_list_s32(name, list)
-      {:s, 64} -> Native.s_from_list_s64(name, list)
+      {:s, 8} ->
+        Native.s_from_list_s8(name, list)
+
+      {:s, 16} ->
+        Native.s_from_list_s16(name, list)
+
+      {:s, 32} ->
+        Native.s_from_list_s32(name, list)
+
+      {:s, 64} ->
+        Native.s_from_list_s64(name, list)
+
       # Unsigned integers
-      {:u, 8} -> Native.s_from_list_u8(name, list)
-      {:u, 16} -> Native.s_from_list_u16(name, list)
-      {:u, 32} -> Native.s_from_list_u32(name, list)
-      {:u, 64} -> Native.s_from_list_u64(name, list)
+      {:u, 8} ->
+        Native.s_from_list_u8(name, list)
+
+      {:u, 16} ->
+        Native.s_from_list_u16(name, list)
+
+      {:u, 32} ->
+        Native.s_from_list_u32(name, list)
+
+      {:u, 64} ->
+        Native.s_from_list_u64(name, list)
+
       # Floats
-      {:f, 32} -> Native.s_from_list_f32(name, list)
-      {:f, 64} -> Native.s_from_list_f64(name, list)
-      :boolean -> Native.s_from_list_bool(name, list)
-      :string -> Native.s_from_list_str(name, list)
-      :category -> Native.s_from_list_categories(name, list)
-      :date -> Native.s_from_list_date(name, list)
-      :time -> Native.s_from_list_time(name, list)
-      {:naive_datetime, precision} -> Native.s_from_list_naive_datetime(name, list, precision)
-      {:datetime, precision, tz} -> Native.s_from_list_datetime(name, list, precision, tz)
-      {:duration, precision} -> Native.s_from_list_duration(name, list, precision)
-      :binary -> Native.s_from_list_binary(name, list)
-      :null -> Native.s_from_list_null(name, length(list))
+      {:f, 32} ->
+        Native.s_from_list_f32(name, list)
+
+      {:f, 64} ->
+        Native.s_from_list_f64(name, list)
+
+      :boolean ->
+        Native.s_from_list_bool(name, list)
+
+      :string ->
+        Native.s_from_list_str(name, list)
+
+      :category ->
+        Native.s_from_list_categories(name, list)
+
+      :date ->
+        if name == "new_version",
+          do: Native.s_from_list_date_decoding(name, list),
+          else: Native.s_from_list_date(name, list)
+
+      :time ->
+        Native.s_from_list_time(name, list)
+
+      {:naive_datetime, precision} ->
+        Native.s_from_list_naive_datetime(name, list, precision)
+
+      {:datetime, precision, tz} ->
+        Native.s_from_list_datetime(name, list, precision, tz)
+
+      {:duration, precision} ->
+        Native.s_from_list_duration(name, list, precision)
+
+      :binary ->
+        Native.s_from_list_binary(name, list)
+
+      :null ->
+        Native.s_from_list_null(name, length(list))
     end
   end
 

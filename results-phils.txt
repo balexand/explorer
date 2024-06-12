@@ -1,0 +1,189 @@
+
+Operating System: macOS
+CPU Information: Intel(R) Xeon(R) W-2140B CPU @ 3.20GHz
+Number of Available Cores: 16
+Available memory: 32 GB
+Elixir 1.16.2
+Erlang 26.2.5
+JIT enabled: false
+
+Benchmark suite executing with the following configuration:
+warmup: 2 s
+time: 1 min
+memory time: 2 s
+reduction time: 0 ns
+parallel: 1
+inputs: big list of dates w/ dtype, big list of dates without dtype, big list of ints, medium list of dates w/ dtype, medium list of dates without dtype, medium list of ints, small list of dates w/ dtype, small list of dates without dtype, small list of ints
+Estimated total run time: 19 min 12 s
+
+Benchmarking new with input big list of dates w/ dtype ...
+Benchmarking new with input big list of dates without dtype ...
+Benchmarking new with input big list of ints ...
+Benchmarking new with input medium list of dates w/ dtype ...
+Benchmarking new with input medium list of dates without dtype ...
+Benchmarking new with input medium list of ints ...
+Benchmarking new with input small list of dates w/ dtype ...
+Benchmarking new with input small list of dates without dtype ...
+Benchmarking new with input small list of ints ...
+Benchmarking old with input big list of dates w/ dtype ...
+Benchmarking old with input big list of dates without dtype ...
+Benchmarking old with input big list of ints ...
+Benchmarking old with input medium list of dates w/ dtype ...
+Benchmarking old with input medium list of dates without dtype ...
+Benchmarking old with input medium list of ints ...
+Benchmarking old with input small list of dates w/ dtype ...
+Benchmarking old with input small list of dates without dtype ...
+Benchmarking old with input small list of ints ...
+Calculating statistics...
+Formatting results...
+
+##### With input big list of dates w/ dtype #####
+Name           ips        average  deviation         median         99th %
+new           1.69      592.98 ms     ±2.77%      586.57 ms      693.33 ms
+old           1.55      644.59 ms     ±2.05%      640.05 ms      701.84 ms
+
+Comparison:
+new           1.69
+old           1.55 - 1.09x slower +51.61 ms
+
+Memory usage statistics:
+
+Name    Memory usage
+new            464 B
+old            464 B - 1.00x memory usage +0 B
+
+**All measurements for memory usage were the same**
+
+##### With input big list of dates without dtype #####
+Name           ips        average  deviation         median         99th %
+new           1.59      629.21 ms     ±2.30%      624.35 ms      696.72 ms
+old           1.55      644.52 ms     ±1.76%      641.43 ms      712.14 ms
+
+Comparison:
+new           1.59
+old           1.55 - 1.02x slower +15.31 ms
+
+Memory usage statistics:
+
+Name    Memory usage
+new            464 B
+old            464 B - 1.00x memory usage +0 B
+
+**All measurements for memory usage were the same**
+
+##### With input big list of ints #####
+Name           ips        average  deviation         median         99th %
+new           7.72      129.60 ms     ±2.67%      129.42 ms      132.20 ms
+old           4.11      243.56 ms     ±2.14%      242.07 ms      268.72 ms
+
+Comparison:
+new           7.72
+old           4.11 - 1.88x slower +113.96 ms
+
+Memory usage statistics:
+
+Name    Memory usage
+new            464 B
+old            736 B - 1.59x memory usage +272 B
+
+**All measurements for memory usage were the same**
+
+##### With input medium list of dates w/ dtype #####
+Name           ips        average  deviation         median         99th %
+new          16.88       59.24 ms     ±7.21%       58.31 ms       63.04 ms
+old          15.34       65.21 ms     ±7.97%       64.43 ms       73.78 ms
+
+Comparison:
+new          16.88
+old          15.34 - 1.10x slower +5.97 ms
+
+Memory usage statistics:
+
+Name    Memory usage
+new            464 B
+old            464 B - 1.00x memory usage +0 B
+
+**All measurements for memory usage were the same**
+
+##### With input medium list of dates without dtype #####
+Name           ips        average  deviation         median         99th %
+new          15.96       62.64 ms     ±3.59%       62.35 ms       65.30 ms
+old          15.58       64.18 ms     ±2.16%       63.85 ms       67.84 ms
+
+Comparison:
+new          15.96
+old          15.58 - 1.02x slower +1.54 ms
+
+Memory usage statistics:
+
+Name    Memory usage
+new            464 B
+old            464 B - 1.00x memory usage +0 B
+
+**All measurements for memory usage were the same**
+
+##### With input medium list of ints #####
+Name           ips        average  deviation         median         99th %
+new          77.40       12.92 ms    ±10.85%       12.77 ms       14.55 ms
+old          41.40       24.16 ms    ±10.31%       23.87 ms       26.28 ms
+
+Comparison:
+new          77.40
+old          41.40 - 1.87x slower +11.24 ms
+
+Memory usage statistics:
+
+Name    Memory usage
+new            464 B
+old            736 B - 1.59x memory usage +272 B
+
+**All measurements for memory usage were the same**
+
+##### With input small list of dates w/ dtype #####
+Name           ips        average  deviation         median         99th %
+new         1.64 K      609.05 μs    ±16.70%      590.75 μs      699.52 μs
+old         1.50 K      666.09 μs    ±18.57%      651.43 μs      770.95 μs
+
+Comparison:
+new         1.64 K
+old         1.50 K - 1.09x slower +57.04 μs
+
+Memory usage statistics:
+
+Name    Memory usage
+new            464 B
+old            464 B - 1.00x memory usage +0 B
+
+**All measurements for memory usage were the same**
+
+##### With input small list of dates without dtype #####
+Name           ips        average  deviation         median         99th %
+new         1.53 K      651.52 μs     ±6.25%      631.75 μs      751.62 μs
+old         1.51 K      664.09 μs    ±23.03%      642.33 μs      766.90 μs
+
+Comparison:
+new         1.53 K
+old         1.51 K - 1.02x slower +12.57 μs
+
+Memory usage statistics:
+
+Name    Memory usage
+new            464 B
+old            464 B - 1.00x memory usage +0 B
+
+**All measurements for memory usage were the same**
+
+##### With input small list of ints #####
+Name           ips        average  deviation         median         99th %
+new         7.01 K      142.61 μs    ±38.97%      137.17 μs      182.27 μs
+old         3.73 K      267.81 μs    ±19.71%      256.03 μs      356.90 μs
+
+Comparison:
+new         7.01 K
+old         3.73 K - 1.88x slower +125.20 μs
+
+Memory usage statistics:
+
+Name    Memory usage
+new            464 B
+old            736 B - 1.59x memory usage +272 B

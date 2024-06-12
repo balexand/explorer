@@ -25,6 +25,11 @@ defmodule Explorer.PolarsBackend.Series do
     Explorer.Backend.Series.new(series, type)
   end
 
+  def from_list_new(data, type) when is_list(data) do
+    series = Shared.from_list(data, type, "new_version")
+    Explorer.Backend.Series.new(series, type)
+  end
+
   @impl true
   def from_binary(data, dtype) when is_binary(data) do
     series = Shared.from_binary(data, dtype)

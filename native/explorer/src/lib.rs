@@ -408,6 +408,7 @@ rustler::init!(
         s_from_list_null,
         s_from_list_bool,
         s_from_list_date,
+        s_from_list_date_decoding,
         s_from_list_time,
         s_from_list_naive_datetime,
         s_from_list_datetime,

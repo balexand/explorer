@@ -471,6 +471,20 @@ defmodule Explorer.Series do
     end
   end
 
+  def from_list_new(list, opts \\ []) do
+    opts = Keyword.validate!(opts, [:dtype, :backend])
+    backend = backend_from_options!(opts)
+
+    dtype =
+      if opts[:dtype] do
+        Shared.normalise_dtype!(opts[:dtype])
+      else
+        Shared.dtype_from_list!(list, nil)
+      end
+
+    backend.from_list_new(list, dtype)
+  end
+
   defp from_same_value(%{data: %backend{}}, value) do
     backend.from_list([value], Shared.dtype_from_list!([value]))
   end
