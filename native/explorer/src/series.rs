@@ -113,37 +113,35 @@ pub fn s_from_list_date(name: &str, val: Vec<Option<ExDate>>) -> ExSeries {
 
 #[rustler::nif(schedule = "DirtyCpu")]
 pub fn s_from_list_date_decoding(name: &str, val: Term) -> NifResult<ExSeries> {
-            let values: NifResult<Vec<Option<i32>>> = val
-                .decode::<ListIterator>()?
-                .map(|item| match item.get_type() {
-                    TermType::Integer => {
-                        let int_value = item.decode::<i32>().unwrap();
-                        Ok(Some(int_value))
-                    }
-                    TermType::Atom => Ok(None),
-                    TermType::Map => {
-                      match item.decode::<ExDate>() {
-                          Ok(ex_date) => Ok(Some(i32::from(ex_date))),
-                          Err(error) => {
-                              let message = format!("cannot decode a valid date from term. error: {error:?}");
-                              Err(Error::RaiseTerm(Box::new(message)))
-                          }
-                      }
-                    }
-                    term_type => {
-                        let message = format!("from_list/2 not implemented for {term_type:?}");
-                        Err(Error::RaiseTerm(Box::new(message)))
-                    }
-                })
-                .collect::<NifResult<Vec<Option<i32>>>>();
-
-            match values {
-                Ok(x) => {
-                    let s = Series::new(name, x).cast(&DataType::Date).unwrap();
-                    Ok(ExSeries::new(s))
-                }
-                Err(x) => Err(x),
+    let values: NifResult<Vec<Option<i32>>> = val
+        .decode::<ListIterator>()?
+        .map(|item| match item.get_type() {
+            TermType::Integer => {
+                let int_value = item.decode::<i32>().unwrap();
+                Ok(Some(int_value))
             }
+            TermType::Atom => Ok(None),
+            TermType::Map => match item.decode::<ExDate>() {
+                Ok(ex_date) => Ok(Some(i32::from(ex_date))),
+                Err(error) => {
+                    let message = format!("cannot decode a valid date from term. error: {error:?}");
+                    Err(Error::RaiseTerm(Box::new(message)))
+                }
+            },
+            term_type => {
+                let message = format!("from_list/2 not implemented for {term_type:?}");
+                Err(Error::RaiseTerm(Box::new(message)))
+            }
+        })
+        .collect::<NifResult<Vec<Option<i32>>>>();
+
+    match values {
+        Ok(x) => {
+            let s = Series::new(name, x).cast(&DataType::Date).unwrap();
+            Ok(ExSeries::new(s))
+        }
+        Err(x) => Err(x),
+    }
 }
 
 #[rustler::nif(schedule = "DirtyCpu")]
